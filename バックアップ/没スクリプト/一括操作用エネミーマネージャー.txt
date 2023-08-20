@@ -1,0 +1,109 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyManager : MonoBehaviour {
+    //アニメーター
+    private Animator _animator;
+    //スケール
+    private Vector3 _scale;
+    //
+    private Vector3 _pos;
+
+    //ステータス
+    private int _st;
+    //_st = 1　基本形
+    //_st = 2　移動
+    //_st = 3 振り向き
+
+    //移動スピード
+    public float _walkSpeed;
+    //x方向
+    private bool _x_dire;
+    //タイマー
+    private float _timer;
+    
+    //乱数
+    private int _ran;
+    //
+    public bool _spawnFlag;
+
+    void Awake() {
+        _animator = this.GetComponent<Animator>();
+        _scale = this.transform.localScale;
+
+    }
+    void Start() {
+        _animator.Play("Base");
+        _spawnFlag = true;
+        _st = 1;
+        _x_dire = false;
+        _timer = 0;
+
+    }
+
+    void FixedUpdate() {
+        if (_st == 1) {
+            _timer += Time.deltaTime;
+
+            if (_timer >= 0.5) {
+                _ran = Random.Range(0, 10);
+
+                if (_ran == 1 && _x_dire == false) {
+                    _timer = 0;
+                    _st = 2;
+                    _animator.Play("Walk");
+
+                    //左
+                } else if (_ran == 1 && _x_dire == true) {
+                    _timer = 0;
+                    _st = 2;
+                    _animator.Play("WalkRight");
+
+                }
+
+            }
+
+        } else if (_st == 2) {
+            if (_x_dire == true) {
+                transform.Translate(_walkSpeed / 50, 0, 0);
+
+            } else {
+                transform.Translate(-_walkSpeed / 50, 0, 0);
+
+            }
+
+        } else if (_st == 3) {
+            _timer += Time.deltaTime;
+            if (_timer >= 0.1f) {
+                _timer = 0;
+                _st = 1;
+                
+                if (_x_dire == true) {
+                    _x_dire = false;
+                    _animator.Play("Base");
+
+                } else {
+                    _x_dire = true;
+                    _animator.Play("BaseRight");
+
+                }
+
+            }
+
+        }
+
+    }
+
+    void OnTriggerExit2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Floor" && _st == 2) {
+            _st = 3;
+            _timer = 0;
+            _animator.Play("Turn");
+            this.transform.localScale = _scale;
+
+        }
+
+    }
+
+}
