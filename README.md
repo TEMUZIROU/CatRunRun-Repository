@@ -1,5 +1,5 @@
 # CatRunRun-Repository
-### CatRunRun用の管理用
+### CatRunRunの管理用
 
 ##### 2023.08.21 水曜日時点<br><br>
 仮タイトル:CatRunRun<br>
