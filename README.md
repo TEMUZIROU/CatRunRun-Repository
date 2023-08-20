@@ -1,7 +1,7 @@
-# CatRunRun-Repository(h1)
-# CatRunRun用の管理用(h3)
+# CatRunRun-Repository
+### CatRunRun用の管理用
 
-# 2023.08.21 水曜日時点(h5)<br><br>
+##### 2023.08.21 水曜日時点<br><br>
 仮タイトル:CatRunRun<br>
 ジャンル:2D横スクロールアクション<br>
 ストーリー:ある家族に飼われていた猫がある日急に、家から飛び出して逃げ出します。<br>
