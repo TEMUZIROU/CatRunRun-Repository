@@ -1,6 +1,6 @@
 # CatRunRun-Repository
 ### CatRunRunの管理用
-[制作中の公開用ブログへ]()
+[制作中の公開用ブログへ](http://temugame.web.fc2.com/temu-game.html)
 
 2023.08.21 月曜日時点<br><br>
 仮タイトル:CatRunRun<br>
